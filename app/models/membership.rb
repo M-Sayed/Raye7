@@ -16,6 +16,8 @@ class Membership < ApplicationRecord
   belongs_to :trip
 
   def seats_availablity
-    self.trip.seats > self.trip.users.count - 1 # -1 for the driver.
+    if self.trip.seats <= self.trip.users.count
+      errors.add(seats_availablity: "There is no seat available for this user")
+    end
   end
 end

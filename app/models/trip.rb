@@ -19,7 +19,7 @@ class Trip < ApplicationRecord
   validates_presence_of :source_place, :destination_place
 
   has_many :memberships, dependent: :destroy
-  has_many :users, through: :memberships, source: :user, dependent: :destroy
+  has_many :users, through: :memberships, source: :user
   belongs_to :driver, class_name: 'User', foreign_key: :driver_id
   belongs_to :source_place, class_name: 'Place', foreign_key: :source_id
   belongs_to :destination_place, class_name: 'Place', foreign_key: :destination_id
